@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import type { PluginOption } from 'vite';
 import { resolve } from 'path';
 import react from '@vitejs/plugin-react-swc';
