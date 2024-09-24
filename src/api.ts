@@ -55,7 +55,7 @@ export const getOrder = async (
   trackingNumber: string,
   zipCode: string
 ): Promise<Order | undefined> => {
-  if (import.meta.env.VITE_USE_MOCK !== 'true') {
+  if (import.meta.env.VITE_USE_MOCK === 'false') {
     const base = import.meta.env.VITE_API_END_POINT;
     const response = await fetch(
       `${base}/orders/${trackingNumber}?zip=${zipCode}`
