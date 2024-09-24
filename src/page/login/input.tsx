@@ -18,6 +18,7 @@ const Input: FC<InputProps> = ({ value, name, label, error, onChange }) => {
         {label}
       </label>
       <input
+        data-testid={name}
         value={value}
         onChange={(evt) => onChange(evt.target.value)}
         className={

@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import Input from './input';
 import { getOrderLink } from '../../routes';
 import Logo from '../../components/logo';
+import { validate } from './validate';
 interface LoginPageProps {}
-type LoginPageState = {
+export type LoginPageState = {
   status: 'NOT_FOUND' | 'NONE' | 'LOADING' | 'ERROR' | 'INVALID';
   orderNumber: string;
   zipCode: string;
@@ -46,13 +47,13 @@ const LoginPage: FC<LoginPageProps> = () => {
   const handleFormSubmit = async (evt: FormEvent<HTMLFormElement>) => {
     try {
       evt.preventDefault();
+
       setState((c) => ({ ...c, status: 'LOADING' }));
-      //validate state
-      if (state.orderNumber?.length < 3 || state.zipCode?.length < 3) {
+
+      if (validate(state)) {
         setState((c) => ({ ...c, status: 'INVALID' }));
         return;
       }
-      //redirect to other view
       const order = await getOrder(state.orderNumber, state.zipCode);
       if (!order) {
         setState((c) => ({ ...c, status: 'NOT_FOUND' }));
@@ -69,6 +70,7 @@ const LoginPage: FC<LoginPageProps> = () => {
   return (
     <Layout>
       <form
+        data-testid="form"
         onSubmit={handleFormSubmit}
         className="bg-white mx-auto max-w-xs shadow-md border rounded-xl py-12 px-6 text-center flex flex-col gap-y-4 m-auto"
       >
@@ -108,7 +110,11 @@ const LoginPage: FC<LoginPageProps> = () => {
         />
         <hr></hr>
         {STATUS_MAP[state.status]}
-        <Button disabled={state.status === 'LOADING'} type="submit">
+        <Button
+          data-testid="btn"
+          disabled={state.status === 'LOADING'}
+          type="submit"
+        >
           Track
         </Button>
       </form>
