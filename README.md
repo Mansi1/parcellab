@@ -1,50 +1,21 @@
-# React + TypeScript + Vite
+# Parcellab codingchange
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**At parcelLab we build tools that integrate with the worlds best online retailers and are used by millions of people - every day! That is why we are really into creating outstanding user experiences.**
 
-Currently, two official plugins are available:
+In this scenario, you are Frontend Engineer at parcelLab and you start working on a new project of building a web app that displays the order status and the shipping information for orders. Because your fellow backend developer colleague is late with his part, you will need to mock an api that returns one order from a list of orders `orders.json` based on the user's input and display it in a appealing way.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The api that you mock will be (when finished) hosted on `https://api.prcl.dev` and the endpoints URL will look something like that: `/orders/{{orderNumber}}?zip={{zipCode}}`. You can use any tool you like for mocking the api.
 
-## Expanding the ESLint configuration
+### The app should have 2 views:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Sign In / User Input view** - here the user can input an **order number** and a **zip code** (for verification - so that it is not possible to get access to order information without knowing the zip code of it) and a submit button. If the entered order number does not exist in the DB (orders.json) or the zip code does not match, you can show a error here as a notification or on a new page. Your choice.
+2. **Order View** - after the user typed in a valid order number that exists in the DB, user will land on this page. It should view the order details and the shipping (in parcelLab lang "tracking") information.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+This is how this could look like:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<img src="login-mockup.avif" >
+<img src="tacking-mockup.avif" >
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## how it works
+got ot my website <a href="https://parcellab.mannseicher.com" target="_blank">parcellab.mannseicher.com</a>
