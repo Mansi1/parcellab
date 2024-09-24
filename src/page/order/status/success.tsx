@@ -51,7 +51,7 @@ const Success: FC<SuccessProps> = ({ order }) => {
           <LinearProgress percentage={75} />
           <div className="grow">
             {order.checkpoints
-              .filter((_, i) => i < 4)
+              .filter((_, i) => i < 3)
               .map((checkpoint, i) => (
                 <Checkpoint
                   key={checkpoint.status + '-' + i}
@@ -74,7 +74,7 @@ const Success: FC<SuccessProps> = ({ order }) => {
           <div className="text-md">Articles</div>
           <div className="grow">
             {order.delivery_info.articles
-              .filter((_, i) => i < 4)
+              .filter((_, i) => i < 3)
               .map((article) => (
                 <Article
                   key={'article-' + article.articleNo}
