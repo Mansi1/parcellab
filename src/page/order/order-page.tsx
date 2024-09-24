@@ -10,7 +10,7 @@ import LinearProgress from '../../components/linear-progress';
 interface OrderPageProps {}
 type OrderPageState =
   | {
-      status: 'LOADING' | 'NOT_FOUND';
+      status: 'LOADING' | 'NOT_FOUND' | 'ERROR';
     }
   | {
       status: 'SUCCESS';
@@ -23,20 +23,24 @@ const OrderPage: FC<OrderPageProps> = () => {
   const [state, setState] = useState<OrderPageState>({ status: 'LOADING' });
 
   const load = useCallback(async () => {
-    if (state.status !== 'LOADING') {
-      setState({
-        status: 'LOADING',
-      });
-    }
-    if (!trackingNumber || !zipCode) {
-      navigate('/', { replace: true });
-      return;
-    }
-    const order = await getOrder(trackingNumber, zipCode);
-    if (!!order) {
-      setState({ status: 'SUCCESS', order });
-    } else {
-      setState({ status: 'NOT_FOUND' });
+    try {
+      if (state.status !== 'LOADING') {
+        setState({
+          status: 'LOADING',
+        });
+      }
+      if (!trackingNumber || !zipCode) {
+        navigate('/', { replace: true });
+        return;
+      }
+      const order = await getOrder(trackingNumber, zipCode);
+      if (!!order) {
+        setState({ status: 'SUCCESS', order });
+      } else {
+        setState({ status: 'NOT_FOUND' });
+      }
+    } catch (e) {
+      setState({ status: 'ERROR' });
     }
   }, []);
 
@@ -75,8 +79,33 @@ const OrderPage: FC<OrderPageProps> = () => {
             </tbody>
           </table>
           <Button onClick={() => navigate('/', { replace: true })}>
-            Try again
+            Back to login
           </Button>
+        </div>
+      )}
+      {state.status === 'ERROR' && (
+        <div className="bg-white mx-auto max-w-xs shadow-md border rounded-xl py-12 px-6 text-center flex flex-col gap-y-4 m-auto">
+          <div className="mt-[-80px]">
+            <SquarLogo className="bg-[#002172] fill-white rounded-xl p-2 w-20 shadow-xl m-auto" />
+          </div>
+          <h1 className="text-2xl">Unexpected error happend</h1>
+          <div className="text-xs text-gray-400 px-4">
+            please try again or contact support{' '}
+            <a href="mailto:support@parcellab.com">support@parcellab.com</a>:
+          </div>
+          <table className="text-xs text-gray-400 px-4">
+            <tbody>
+              <tr>
+                <td>Order number</td>
+                <td>{trackingNumber}</td>
+              </tr>
+              <tr>
+                <td>ZipCode</td>
+                <td>{zipCode}</td>
+              </tr>
+            </tbody>
+          </table>
+          <Button onClick={() => load()}>Try again</Button>
         </div>
       )}
       {state.status === 'SUCCESS' && (
