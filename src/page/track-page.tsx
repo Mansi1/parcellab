@@ -24,7 +24,7 @@ const TrackPage: FC<TrackPageProps> = () => {
     <Layout>
       <form
         onSubmit={handleFormSubmit}
-        className="bg-white mx-auto max-w-sm shadow-md border rounded-xl py-12 px-8 text-center flex flex-col gap-y-4 m-auto"
+        className="bg-white mx-auto max-w-xs shadow-md border rounded-xl py-12 px-6 text-center flex flex-col gap-y-4 m-auto"
       >
         <div className="mt-[-80px]">
           <SquarLogo className="bg-[#002172] fill-white rounded-xl p-2 w-20 shadow-xl m-auto" />
