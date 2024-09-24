@@ -6,7 +6,7 @@ interface TrackPageProps {}
 const TrackPage: FC<TrackPageProps> = () => {
   return (
     <Layout>
-      <form className="mx-auto max-w-sm shadow-md border rounded-xl py-12 px-8 text-center flex flex-col gap-y-4 m-auto">
+      <form className="bg-white mx-auto max-w-sm shadow-md border rounded-xl py-12 px-8 text-center flex flex-col gap-y-4 m-auto">
         <div className="mt-[-80px]">
           <SquarLogo className="bg-[#002172] fill-white rounded-xl p-2 w-20 shadow-xl m-auto" />
         </div>

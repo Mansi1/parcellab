@@ -8,5 +8,5 @@ html, body, #root {
 }
 
 #root {
-  @apply flex flex-col
+  @apply flex flex-col bg-gradient-to-b from-gray-600 to-gray-200
 }
