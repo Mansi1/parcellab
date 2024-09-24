@@ -109,8 +109,8 @@ const OrderPage: FC<OrderPageProps> = () => {
         </div>
       )}
       {state.status === 'SUCCESS' && (
-        <div className="h-full w-full content-center">
-          <div className="p-8 flex">
+        <div className="h-full w-full max-w-[1024px] content-center m-auto">
+          <div className="p-2 py-8 flex ">
             <SquarLogo className="bg-[#002172] fill-white rounded-xl p-2 w-20 shadow-xl" />
             <div className="grow"></div>
             <div>
@@ -122,8 +122,8 @@ const OrderPage: FC<OrderPageProps> = () => {
               </button>
             </div>
           </div>
-          <div className="flex w-full h-fit  ">
-            <div className="w-full max-w-xs bg-white mx-auto shadow-md rounded-xl flex flex-col gap-y-4">
+          <div className="flex w-full h-fit flex-wrap gap-8">
+            <div className="m-0 w-full max-w-xs bg-white mx-auto shadow-md rounded-xl flex flex-col gap-y-4">
               <div className="p-4 grow">
                 <div className="text-2xl font-bold">Ready for collection</div>
                 <div className="text-md font-bold pt-4">
@@ -141,7 +141,7 @@ const OrderPage: FC<OrderPageProps> = () => {
                 </Button>
               </div>
             </div>
-            <div className="w-full max-w-xs bg-white mx-auto shadow-md rounded-xl flex flex-col gap-y-4  p-6">
+            <div className="m-0  w-full max-w-xs bg-white mx-auto shadow-md rounded-xl flex flex-col gap-y-4  p-6">
               <div className="text-md">Shipping updates</div>
               {/*dont know how to calculate it*/}
               <LinearProgress percentage={75} />
@@ -166,7 +166,7 @@ const OrderPage: FC<OrderPageProps> = () => {
                 </button>
               )}
             </div>
-            <div className="w-full max-w-xs bg-white mx-auto shadow-md rounded-xl flex flex-col gap-y-4 p-6">
+            <div className="m-0  w-full max-w-xs bg-white mx-auto shadow-md rounded-xl flex flex-col gap-y-4 p-6">
               <div className="text-md">Articles</div>
               <div className="grow">
                 {state.order.delivery_info.articles
