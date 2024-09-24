@@ -1,12 +1,31 @@
-import type { FC } from 'react';
+import { FormEvent, FormEventHandler, useState, type FC } from 'react';
 import Layout from '../components/layout';
 import SquarLogo from '../assets/parcelab-logo-square.svg?react';
 import Button from '../components/button';
 interface TrackPageProps {}
+type TrackPageState = {
+  orderNumber: string;
+  zipCode: string;
+};
 const TrackPage: FC<TrackPageProps> = () => {
+  const [state, setState] = useState<TrackPageState>({
+    orderNumber: '',
+    zipCode: '',
+  });
+
+  const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    //validate state
+
+    //redirect to other view
+  };
   return (
     <Layout>
-      <form className="bg-white mx-auto max-w-sm shadow-md border rounded-xl py-12 px-8 text-center flex flex-col gap-y-4 m-auto">
+      <form
+        onSubmit={handleFormSubmit}
+        className="bg-white mx-auto max-w-sm shadow-md border rounded-xl py-12 px-8 text-center flex flex-col gap-y-4 m-auto"
+      >
         <div className="mt-[-80px]">
           <SquarLogo className="bg-[#002172] fill-white rounded-xl p-2 w-20 shadow-xl m-auto" />
         </div>
@@ -24,6 +43,10 @@ const TrackPage: FC<TrackPageProps> = () => {
           </label>
 
           <input
+            value={state.orderNumber}
+            onChange={(evt) =>
+              setState((c) => ({ ...c, orderNumber: evt.target.value }))
+            }
             className="border-2 rounded-md bg-gray-50 p-2 w-full"
             name="orderNumber"
           />
@@ -36,6 +59,10 @@ const TrackPage: FC<TrackPageProps> = () => {
             Zip Code
           </label>
           <input
+            value={state.zipCode}
+            onChange={(evt) =>
+              setState((c) => ({ ...c, zipCode: evt.target.value }))
+            }
             className="border-2 rounded-md bg-gray-50 p-2 w-full"
             name="zipcode"
           />

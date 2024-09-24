@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/layout';
+import Button from '../components/button';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
 
   return (
     <Layout>
-      <div className="text-center h-full content-center py-10">
+      <div className="text-center h-full content-center py-10 m-auto">
         <h1 className="text-8xl mb-4">404</h1>
 
         <div className="max-w-[550px] m-auto">
@@ -20,9 +21,9 @@ const NotFoundPage = () => {
               <span>:/</span>
             </div>
           </div>
-          <button onClick={() => navigate('/', { replace: true })}>
-            return to home
-          </button>
+          <Button onClick={() => navigate('/', { replace: true })}>
+            Return to home
+          </Button>
         </div>
       </div>
     </Layout>

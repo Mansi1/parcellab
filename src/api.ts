@@ -67,7 +67,10 @@ export const getOrder = async (
     console.log('Mocked enpoint');
     const response = await fetch(`/order.json`);
     if (response.ok) {
+      //wait 500 millis to see loader
+      await new Promise((r) => setTimeout(r, 500));
       const orders = (await response.json()) as Array<Order>;
+
       return orders.find(
         (order) =>
           order.tracking_number === trackingNumber && order.zip_code === zipCode
