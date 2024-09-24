@@ -1,9 +1,11 @@
 import { FormEvent, ReactNode, useState, type FC } from 'react';
-import Layout from '../components/layout';
-import SquarLogo from '../assets/parcelab-logo-square.svg?react';
-import Button from '../components/button';
-import { getOrder } from '../api';
+import Layout from '../../components/layout';
+import Button from '../../components/button';
+import { getOrder } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import Input from './input';
+import { getOrderLink } from '../../routes';
+import Logo from '../../components/logo';
 interface LoginPageProps {}
 type LoginPageState = {
   status: 'NOT_FOUND' | 'NONE' | 'LOADING' | 'ERROR' | 'INVALID';
@@ -55,7 +57,7 @@ const LoginPage: FC<LoginPageProps> = () => {
       if (!order) {
         setState((c) => ({ ...c, status: 'NOT_FOUND' }));
       } else {
-        navigate(`/order/${order.tracking_number}/zipcode/${order.zip_code}`, {
+        navigate(getOrderLink(order.tracking_number, order.zip_code), {
           replace: true,
         });
       }
@@ -71,60 +73,39 @@ const LoginPage: FC<LoginPageProps> = () => {
         className="bg-white mx-auto max-w-xs shadow-md border rounded-xl py-12 px-6 text-center flex flex-col gap-y-4 m-auto"
       >
         <div className="mt-[-80px]">
-          <SquarLogo className="bg-[#002172] fill-white rounded-xl p-2 w-20 shadow-xl m-auto" />
+          <Logo />
         </div>
         <h1 className="text-2xl">Track your oder</h1>
         <div className="text-xs text-gray-400 px-4">
           Enter your order number and zip code combination to see the order
           details and shipping updates
         </div>
-        <div className="text-left">
-          <label
-            htmlFor="orderNumber"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Order Number
-          </label>
-
-          <input
-            value={state.orderNumber}
-            onChange={(evt) =>
-              setState((c) => ({
-                ...c,
-                status: 'NONE',
-                orderNumber: evt.target.value,
-              }))
-            }
-            className={
-              'border-2 rounded-md bg-gray-50 p-2 w-full' +
-              (state.status === 'INVALID' ? ' border-red-700' : '')
-            }
-            name="orderNumber"
-          />
-        </div>
-        <div className="text-left">
-          <label
-            htmlFor="zipcode"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Zip Code
-          </label>
-          <input
-            value={state.zipCode}
-            onChange={(evt) =>
-              setState((c) => ({
-                ...c,
-                status: 'NONE',
-                zipCode: evt.target.value,
-              }))
-            }
-            className={
-              'border-2 rounded-md bg-gray-50 p-2 w-full' +
-              (state.status === 'INVALID' ? ' border-red-700' : '')
-            }
-            name="zipcode"
-          />
-        </div>
+        <Input
+          error={state.status === 'INVALID'}
+          name="orderNumber"
+          label="Order Number"
+          value={state.orderNumber}
+          onChange={(value) =>
+            setState((c) => ({
+              ...c,
+              status: 'NONE',
+              orderNumber: value,
+            }))
+          }
+        />
+        <Input
+          error={state.status === 'INVALID'}
+          name="zipcode"
+          label="Zip Code"
+          value={state.zipCode}
+          onChange={(value) =>
+            setState((c) => ({
+              ...c,
+              status: 'NONE',
+              zipCode: value,
+            }))
+          }
+        />
         <hr></hr>
         {STATUS_MAP[state.status]}
         <Button disabled={state.status === 'LOADING'} type="submit">

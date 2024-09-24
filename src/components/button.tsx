@@ -1,16 +1,20 @@
 import { forwardRef } from 'react';
+import { cn } from '../utlis/cn';
 
 const Button = forwardRef<
   HTMLButtonElement,
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => {
-  const classes = [
-    'bg-[#002172] text-white p-2 rounded-lg shadow-p hover:bg-[#011955] disabled:bg-gray-700',
-    className,
-  ]
-    .filter((v) => !!v)
-    .join(' ');
-  return <button className={classes} ref={ref} {...props} />;
+  return (
+    <button
+      className={cn(
+        'bg-[#002172] text-white p-2 rounded-lg shadow-p hover:bg-[#011955] disabled:bg-gray-700',
+        className
+      )}
+      ref={ref}
+      {...props}
+    />
+  );
 });
 
 export default Button;
