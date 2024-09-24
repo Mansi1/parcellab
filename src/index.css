@@ -8,7 +8,7 @@ html, body, #root {
 }
 
 #root {
-  @apply flex flex-col bg-gradient-to-b from-gray-600 to-gray-200
+  @apply flex flex-col bg-gradient-to-b from-gray-600 to-gray-900
 }
 .shadow-p {
 
