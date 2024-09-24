@@ -7,9 +7,12 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <nav></nav>
       <main className="grow flex">{children}</main>
-      <footer></footer>
+      <footer className="text-sm text-gray-200 text-center p-2">
+        <a href="https://github.com/Mansi1/parcellab" target="_blank">
+          ©{new Date().getFullYear()} Michael Mannseicher - github repo
+        </a>
+      </footer>
     </>
   );
 };
