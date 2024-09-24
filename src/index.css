@@ -10,3 +10,6 @@ html, body, #root {
 #root {
   @apply flex flex-col bg-gradient-to-b from-gray-600 to-gray-200
 }
+.shadow-p {
+
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;}

@@ -5,7 +5,7 @@ const Button = forwardRef<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => {
   const classes = [
-    'bg-[#002172] text-white p-2 rounded-lg shadow-lg hover:bg-[#011955]',
+    'bg-[#002172] text-white p-2 rounded-lg shadow-p hover:bg-[#011955]',
     className,
   ]
     .filter((v) => !!v)
