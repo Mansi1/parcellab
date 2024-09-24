@@ -1,0 +1,12 @@
+{
+  "framework": "vite",
+  "devCommand": "yarn dev",
+  "buildCommand": "yarn build",
+  "installCommand": "yarn install --frozen-lockfile",
+  "ignoreCommand": "exit 1",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "regions": ["fra1"]
+}
