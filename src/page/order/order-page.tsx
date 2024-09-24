@@ -21,7 +21,7 @@ const OrderPage: FC<OrderPageProps> = () => {
   const navigate = useNavigate();
   const { trackingNumber, zipCode } = useParams();
   const [state, setState] = useState<OrderPageState>({ status: 'LOADING' });
-  console.log(trackingNumber, zipCode);
+
   const load = useCallback(async () => {
     if (state.status !== 'LOADING') {
       setState({
