@@ -3,8 +3,8 @@ export interface Order {
   _id: string;
   courier: string;
   tracking_number: string;
-  created: Date;
-  updated: Date;
+  created: string;
+  updated: string;
   checkpoints: Checkpoint[];
   delivery_info: DeliveryInfo;
   destination_country_iso3: string;
@@ -13,7 +13,7 @@ export interface Order {
 
 export interface Checkpoint {
   status_details: string;
-  event_timestamp: Date;
+  event_timestamp: string;
   status: string;
   country_iso3: string;
   city: string;
@@ -21,7 +21,7 @@ export interface Checkpoint {
 }
 
 export interface Meta {
-  delivery_date?: Date;
+  delivery_date?: string;
   delivery_time_frame_from?: string;
   delivery_time_frame_to?: string;
   pickup_address?: string;
@@ -32,7 +32,7 @@ export interface Meta {
 export interface DeliveryInfo {
   articles: Article[];
   orderNo: string;
-  order_date: Date;
+  order_date: string;
   recipient: string;
   recipient_notification: string;
   email: string;
@@ -40,7 +40,7 @@ export interface DeliveryInfo {
   city: string;
   region: string;
   timezone: string;
-  announced_delivery_date: Date;
+  announced_delivery_date: string;
 }
 
 export interface Article {

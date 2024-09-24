@@ -4,13 +4,14 @@ import SquarLogo from '../assets/parcelab-logo-square.svg?react';
 import Button from '../components/button';
 import { getOrder } from '../api';
 import { useNavigate } from 'react-router-dom';
-interface TrackPageProps {}
-type TrackPageState = {
+interface LoginPageProps {}
+type LoginPageState = {
   status: 'NOT_FOUND' | 'NONE' | 'LOADING' | 'ERROR' | 'INVALID';
   orderNumber: string;
   zipCode: string;
 };
-const STATUS_MAP: Record<TrackPageState['status'], ReactNode> = {
+
+const STATUS_MAP: Record<LoginPageState['status'], ReactNode> = {
   NOT_FOUND: (
     <div className="text-left text-xs text-red-700">Sorry no order found!</div>
   ),
@@ -31,10 +32,10 @@ const STATUS_MAP: Record<TrackPageState['status'], ReactNode> = {
 console.log('orderNumber', 'AB20221219');
 console.log('zipCode', '60156');
 
-const TrackPage: FC<TrackPageProps> = () => {
+const LoginPage: FC<LoginPageProps> = () => {
   const navigate = useNavigate();
 
-  const [state, setState] = useState<TrackPageState>({
+  const [state, setState] = useState<LoginPageState>({
     status: 'NONE',
     orderNumber: '',
     zipCode: '',
@@ -134,4 +135,4 @@ const TrackPage: FC<TrackPageProps> = () => {
   );
 };
 
-export default TrackPage;
+export default LoginPage;

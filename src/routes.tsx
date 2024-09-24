@@ -1,11 +1,16 @@
-import TrackPage from './page/track-page';
+import LoginPage from './page/login-page';
 import { ErrorBoundary } from './error-boundary';
 import NotFoundPage from './page/not-found-page';
+import OrderPage from './page/order/order-page';
 
 export const ROUTES = [
   {
     path: '/',
-    element: <TrackPage />,
+    element: <LoginPage />,
+  },
+  {
+    path: '/order/:trackingNumber/zipcode/:zipCode',
+    element: <OrderPage />,
   },
   {
     path: '*',
