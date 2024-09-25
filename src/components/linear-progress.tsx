@@ -16,7 +16,7 @@ const LinearProgress: FC<LinearProgressProps> = ({ percentage }) => {
       <div className="flex text-gray-400 text-xs">
         <div>Processed</div>
         <div className="grow" />
-        <div>Deleivered</div>
+        <div>Delivered</div>
       </div>
     </div>
   );

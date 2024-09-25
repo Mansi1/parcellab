@@ -18,4 +18,4 @@ This is how this could look like:
 <img src="tacking-mockup.avif" >
 
 ## how it works
-got ot my website <a href="https://parcellab.mannseicher.com" target="_blank">parcellab.mannseicher.com</a>
+go to my website <a href="https://parcellab.mannseicher.com" target="_blank">parcellab.mannseicher.com</a>

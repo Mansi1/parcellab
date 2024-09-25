@@ -4,7 +4,7 @@ import Button from '../../../components/button';
 import SuccessCard from './success-card';
 import LinearProgress from '../../../components/linear-progress';
 import Checkpoint from '../checkpoint';
-import Article from '../articel';
+import Article from '../article';
 import SignOutButton from '../sing-out-button';
 import Logo from '../../../components/logo';
 
@@ -30,7 +30,13 @@ const Success: FC<SuccessProps> = ({ order }) => {
               the goods will be ready for collection on the next working day.{' '}
             </div>
           </div>
-          <div>
+          <div className="relative">
+            <div className="absolute text-xs text-right font-bold top-2 right-2">
+              <div>{order.delivery_info.street}</div>
+              <div>
+                {order.zip_code} {order.delivery_info.city}
+              </div>
+            </div>
             <img
               className="w-full"
               src="https://img.notionusercontent.com/s3/prod-files-secure%2Fbc4a989a-55ce-4f6c-ac1f-b3b890871503%2F0c19ecc9-b4e4-4ac2-8812-0ffe966eeb6e%2Fmap.png/size/w=1420?exp=1727264777&sig=hiO8kwWrcVcew9mpmmusCS-IRTxAxUeSBb4nIsPhgTo"

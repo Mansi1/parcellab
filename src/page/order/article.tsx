@@ -17,7 +17,7 @@ const Article: FC<ArticleProps> = ({ article }) => {
       </div>
       <div className="text-xs">
         <div>{article.articleName}</div>
-        <div className="text-gray-500">Articel number: {article.articleNo}</div>
+        <div className="text-gray-500">Article number: {article.articleNo}</div>
         <div>{article.price.toFixed(2)} €</div>
       </div>
     </div>
